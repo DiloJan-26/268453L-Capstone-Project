@@ -1,6 +1,6 @@
 ## 📊 **Resource-Efficient Adaptation of Automatic Speech Recognition under Realistic Noise Conditions**
 
-## 01. Research question and rationale
+## 01. Project Definition and rationale
 
 **Primary question:** Can updating a limited subset of a pretrained speech recognition network increase robustness under controlled acoustic interference while using less adaptation capacity and measurable compute than more extensive tuning?
 
@@ -28,7 +28,7 @@
 
 ====================================================================
 
-## 3. Datasets and Model
+## 03. Datasets and Model
 
 | ID | Type | Reference / Resource | Description | Primary Link | Additional Link |
 |---|---|---|---|---|---|
