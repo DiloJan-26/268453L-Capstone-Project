@@ -1,2 +1,31 @@
 # Ignore reports directory
 Zreports/
+docs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Credentials
+.env
+.env.*
+!.env.example
+*.key
+
+# Local datasets and downloaded models
+data/
+checkpoints/
+outputs/
+cache/
+*.pt
+*.pth
+*.safetensors
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
