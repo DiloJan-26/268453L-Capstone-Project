@@ -37,3 +37,80 @@
 | M1 | Model Checkpoint | `facebook/wav2vec2-base-960h` | Pretrained Wav2Vec 2.0 ASR checkpoint. | [Hugging Face Model Card](https://huggingface.co/facebook/wav2vec2-base-960h) | [Model Configuration](https://huggingface.co/facebook/wav2vec2-base-960h/blob/main/config.json) |
 | E1 | Evaluation Metric | Hugging Face `evaluate` – Word Error Rate (WER) | Evaluation metric for measuring ASR transcription errors. | [WER Metric Documentation](https://github.com/huggingface/evaluate/blob/main/metrics/wer/README.md) | — |
 | B1 | Optional Benchmark (only for referencing) | CHiME-4: Real and Simulated Noisy Speech | Potential external noisy-speech benchmark. Not directly comparable with LibriSpeech–MUSAN without checking task alignment and licensing. | [CHiME-4 Dataset](https://www.chimechallenge.org/challenges/chime4/data) | — |
+
+============================================================================
+
+
+## 04. Kaggle Datasets & Notebook Works
+
+### 04.1. Prepared ASR Dataset
+
+**Kaggle Dataset:** [asr-capstone-assets-v1](https://www.kaggle.com/datasets/dilojanravindrarasa/asr-capstone-assets-v1)
+
+- **LibriSpeech:** 6,775 recordings, including 20 hours of training speech and separate development/test subsets.
+- **MUSAN:** 60 recordings across noise, competing speech, and music categories, partitioned into train/dev/test.
+- **Pretrained Model:** `facebook/wav2vec2-base-960h` with processor and tokenizer.
+- **Reproducibility:** Versioned source references, CSV manifests, SHA-256 checksums, and validation metadata.
+- **Reuse:** Persisted as a Kaggle Dataset for direct access across notebooks without repeated downloads.
+
+### 04.2. ASR Environment & Model Smoke Test
+
+**Kaggle Notebook:** [01 — ASR Environment & Smoke Test](https://www.kaggle.com/code/dilojanravindrarasa/01-asr-environment-smoke-test)
+
+- Verified the Python, PyTorch, Transformers, and ASR evaluation environment.
+- Loaded the pretrained Wav2Vec2 model and speech processor.
+- Tested audio preprocessing, transcription inference, and basic WER calculation.
+- Checked model compatibility and execution requirements.
+
+### 04.3. Dataset & Audio Processing Pilot
+
+**Kaggle Notebook:** [02 — Dataset & Audio Pilot](https://www.kaggle.com/code/dilojanravindrarasa/02-asr-dataset-inventory)
+
+- Explored LibriSpeech speech samples and MUSAN noise categories.
+- Validated audio decoding, mono-channel format, and 16 kHz sampling.
+- Tested dataset loading, recording metadata, and file integrity checks.
+- Prepared the initial workflow for controlled noise augmentation.
+
+### 04.4. Selective Fine-Tuning Smoke Test
+
+**Kaggle Notebook:** [03 — Fine-Tuning Smoke Test](https://www.kaggle.com/code/dilojanravindrarasa/03-asr-clean-training-pilot)
+
+- Tested Wav2Vec2 selective fine-tuning with the CTC objective.
+- Verified trainable parameter selection, optimizer updates, and loss computation.
+- Completed a six-step training pilot and monitored GPU memory usage.
+- Identified and addressed a training-mode compatibility issue before full experimentation.
+
+### 04.5. ASR Data Preparation
+
+**Kaggle Notebook:** [04 — ASR Data Preparation](https://www.kaggle.com/code/dilojanravindrarasa/04-asr-data-preparation)
+
+- Acquired and organized LibriSpeech, MUSAN, and pretrained Wav2Vec2 resources.
+- Prepared 5,675 training recordings, 500 development recordings, and 600 test recordings.
+- Created speaker-aware speech partitions and source-disjoint noise partitions.
+- Generated dataset manifests, source metadata, and SHA-256 integrity checks.
+- Packaged and validated the resources for persistent Kaggle reuse.
+
+### 04.6. Controlled SNR Noise Augmentation
+
+**Kaggle Notebook:** [05 — ASR Noise Augmentation](https://www.kaggle.com/code/dilojanravindrarasa/05-asr-noise-augmentation)
+
+- Implemented reusable, deterministic audio augmentation using MUSAN.
+- Supported 20, 10, 5, and 0 dB signal-to-noise ratio (SNR) conditions.
+- Validated noise cropping/repetition, SNR accuracy, and clipping prevention.
+- Passed 8 synthetic unit tests and 24 real-audio validation cases.
+- Saved the augmentation module, validation results, configuration, and audio examples.
+
+### 04.7. EDA & Fixed Development Evaluation
+
+**Kaggle Notebook:** [06 — ASR EDA and Fixed Evaluation](https://www.kaggle.com/code/dilojanravindrarasa/06-asr-eda-fixed-evaluation)
+
+- Analyzed speech durations, transcript lengths, speaker diversity, and noise distributions.
+- Generated clean-versus-noisy waveform and spectrogram comparisons.
+- Created 3,250 fixed development evaluation cases across 13 acoustic conditions.
+- Verified speech/speaker isolation and noise-source separation across dataset partitions.
+- Validated 36 deterministic mixture reconstructions with accurate target SNR.
+- Saved EDA figures, fixed evaluation recipes, integrity reports, and artifact checksums.
+
+**Notebook Outputs:** Saved Kaggle notebook versions include generated artifacts, which can be accessed from each notebook's **Output** section.
+
+
